@@ -1,8 +1,8 @@
 package de.caritas.cob.mailservice.api.service;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.Mockito.when;
 
 import de.caritas.cob.mailservice.api.exception.TemplateServiceException;
@@ -16,14 +16,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@RunWith(MockitoJUnitRunner.class)
-public class TemplateServiceTest {
+@ExtendWith(MockitoExtension.class)
+class TemplateServiceTest {
 
   private final String TEMPLATE_NAME = "test";
   private final String PLACEHOLDER1 = "placeholder1";
@@ -63,13 +63,13 @@ public class TemplateServiceTest {
 
   @Mock private TranslationService translationService;
 
-  @Before
-  public void setup() {
+  @BeforeEach
+  void setup() {
     this.templateService = new TemplateService(translationService);
   }
 
   @Test
-  public void getProcessedSubject_Should_ReturnSubjectWithReplacedPlaceholders() {
+  void getProcessedSubject_Should_ReturnSubjectWithReplacedPlaceholders() {
 
     when(translationService.tryFetchTranslations(LanguageCode.DE.getValue(), Dialect.INFORMAL))
         .thenReturn(Optional.of(Map.of("translationKey", SUBJECT_WITH_PLACEHOLDERS)));
@@ -86,7 +86,7 @@ public class TemplateServiceTest {
   }
 
   @Test
-  public void getProcessedHtmlTemplate_Should_ThrowServiceException_WhenTemplateDataIsMissing() {
+  void getProcessedHtmlTemplate_Should_ThrowServiceException_WhenTemplateDataIsMissing() {
 
     try {
       templateService.render(
@@ -95,7 +95,7 @@ public class TemplateServiceTest {
           TEMPLATE_DATA_WITH_MISSING_FIELD);
       fail("Expected exception: ServiceException");
     } catch (TemplateServiceException serviceException) {
-      assertTrue("Excepted ServiceException thrown", true);
+      assertTrue(true, "Excepted ServiceException thrown");
     }
   }
 }

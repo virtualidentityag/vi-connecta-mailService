@@ -21,7 +21,7 @@ public class MailErrorMessageBuilder {
    */
   public String buildEmailErrorMessage(MailDTO mail, Exception ex) {
     String errorMessage =
-        String.format("Mail request for template %s could not be executed.", mail.getTemplate());
+        "Mail request for template %s could not be executed.".formatted(mail.getTemplate());
 
     return "Error message:" + errorMessage + "\n" + replaceMailAddresses(getStackTrace(ex));
   }

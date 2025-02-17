@@ -5,7 +5,7 @@ import de.caritas.cob.mailservice.api.model.LanguageCode;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.thymeleaf.TemplateEngine;

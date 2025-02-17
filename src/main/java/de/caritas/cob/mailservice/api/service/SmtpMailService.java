@@ -8,7 +8,6 @@ import de.caritas.cob.mailservice.api.mailtemplate.TemplateImage;
 import java.io.FileInputStream;
 import java.util.List;
 import org.apache.commons.io.IOUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.ClassPathResource;
@@ -42,7 +41,6 @@ public class SmtpMailService {
   private boolean useCustomResourcesPath;
 
   /** Standard constructor for mail service */
-  @Autowired
   public SmtpMailService(JavaMailSender javaMailSender) {
     this.javaMailSender = javaMailSender;
   }

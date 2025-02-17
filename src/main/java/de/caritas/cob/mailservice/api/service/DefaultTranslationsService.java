@@ -40,8 +40,7 @@ public class DefaultTranslationsService {
       return String.join("", fileLines);
     } catch (IOException ex) {
       throw new IllegalStateException(
-          String.format(
-              "Json file with translations could not be loaded, translation component name: %s",
+          "Json file with translations could not be loaded, translation component name: %s".formatted(
               translationComponentName),
           ex);
     }
@@ -60,8 +59,7 @@ public class DefaultTranslationsService {
       String translationComponentName, String languageCode, Dialect dialect) {
     try {
       String filename =
-          String.format(
-              "%s/%s.%s%s.json",
+          "%s/%s.%s%s.json".formatted(
               customTranslationsPath,
               translationComponentName.toLowerCase(),
               languageCode,

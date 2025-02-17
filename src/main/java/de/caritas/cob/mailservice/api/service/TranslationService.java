@@ -54,8 +54,7 @@ public class TranslationService {
       return fetchTranslationAsMap(languageCode, dialect);
     } catch (JsonProcessingException ex) {
       throw new TranslationServiceException(
-          String.format(
-              "Json file with translations could not be parsed, translation component name: %s",
+          "Json file with translations could not be parsed, translation component name: %s".formatted(
               component),
           ex);
     }

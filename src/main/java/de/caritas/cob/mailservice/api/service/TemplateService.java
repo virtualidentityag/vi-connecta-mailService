@@ -53,8 +53,7 @@ public class TemplateService {
 
     if (!CollectionUtils.isEmpty(missingFieldList)) {
       throw new TemplateServiceException(
-          String.format(
-              "Mail request for template %s could not be executed due to missing fields for template processing. Missing fields: %s",
+          "Mail request for template %s could not be executed due to missing fields for template processing. Missing fields: %s".formatted(
               mail.getTemplate(), String.join(",", missingFieldList)));
     }
 

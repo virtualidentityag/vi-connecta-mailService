@@ -3,7 +3,7 @@ package de.caritas.cob.mailservice.api;
 import de.caritas.cob.mailservice.api.exception.InternalServerErrorException;
 import de.caritas.cob.mailservice.api.service.LogService;
 import java.net.UnknownHostException;
-import javax.validation.ConstraintViolationException;
+import jakarta.validation.ConstraintViolationException;
 import lombok.NoArgsConstructor;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;

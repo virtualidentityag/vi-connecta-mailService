@@ -1,53 +1,53 @@
 package de.caritas.cob.mailservice.api.service;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.Mockito.doThrow;
 
 import de.caritas.cob.mailservice.api.exception.SmtpMailServiceException;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.test.util.ReflectionTestUtils;
 
-@RunWith(MockitoJUnitRunner.class)
-public class SmtpMailServiceTest {
+@ExtendWith(MockitoExtension.class)
+class SmtpMailServiceTest {
 
-  public final String SENDER = "name@domain.de";
-  public final String RECIPIENT = "name@domain.de";
-  public final String RECIPIENTS = "name@domain.de,name2@domain.de";
-  public final String SUBJECT = "subject";
-  public final String TEMPLATE = "test";
-  public final String BODY = "test";
+  final String SENDER = "name@domain.de";
+  final String RECIPIENT = "name@domain.de";
+  final String RECIPIENTS = "name@domain.de,name2@domain.de";
+  final String SUBJECT = "subject";
+  final String TEMPLATE = "test";
+  final String BODY = "test";
 
   @Mock private JavaMailSender javaMailSender;
 
   private SmtpMailService mailService;
 
-  @Before
-  public void setup() {
+  @BeforeEach
+  void setup() {
     this.mailService = new SmtpMailService(javaMailSender);
   }
 
   @Test
-  public void prepareAndSendHtmlMail_Should_ThrowServiceException_WhenSenderMailAddressIsNotSet() {
+  void prepareAndSendHtmlMail_Should_ThrowServiceException_WhenSenderMailAddressIsNotSet() {
 
     try {
       mailService.prepareAndSendHtmlMail(RECIPIENT, SUBJECT, TEMPLATE, null);
       fail("Expected exception: ServiceException");
     } catch (SmtpMailServiceException serviceException) {
-      assertTrue("Excepted ServiceException thrown", true);
+      assertTrue(true, "Excepted ServiceException thrown");
     }
   }
 
   @Test
-  public void prepareAndSendHtmlMail_Should_ThrowServiceException_WhenMailCouldNotBeSend()
+  void prepareAndSendHtmlMail_Should_ThrowServiceException_WhenMailCouldNotBeSend()
       throws NoSuchFieldException, SecurityException {
 
     ReflectionTestUtils.setField(mailService, "mailSender", String.valueOf(SENDER));
@@ -60,23 +60,23 @@ public class SmtpMailServiceTest {
       mailService.prepareAndSendHtmlMail(RECIPIENT, SUBJECT, TEMPLATE, null);
       fail("Expected exception: ServiceException");
     } catch (SmtpMailServiceException serviceException) {
-      assertTrue("Excepted ServiceException thrown", true);
+      assertTrue(true, "Excepted ServiceException thrown");
     }
   }
 
   @Test
-  public void prepareAndSendTextMail_Should_ThrowServiceException_WhenSenderMailAddressIsNotSet() {
+  void prepareAndSendTextMail_Should_ThrowServiceException_WhenSenderMailAddressIsNotSet() {
 
     try {
       mailService.prepareAndSendTextMail(RECIPIENT, SUBJECT, BODY);
       fail("Expected exception: ServiceException");
     } catch (SmtpMailServiceException serviceException) {
-      assertTrue("Excepted ServiceException thrown", true);
+      assertTrue(true, "Excepted ServiceException thrown");
     }
   }
 
   @Test
-  public void prepareAndSendTextMail_Should_ThrowServiceException_WhenMailCouldNotBeSend()
+  void prepareAndSendTextMail_Should_ThrowServiceException_WhenMailCouldNotBeSend()
       throws NoSuchFieldException, SecurityException {
 
     ReflectionTestUtils.setField(mailService, "mailSender", String.valueOf(SENDER));
@@ -89,7 +89,7 @@ public class SmtpMailServiceTest {
       mailService.prepareAndSendTextMail(RECIPIENT, SUBJECT, BODY);
       fail("Expected exception: ServiceException");
     } catch (SmtpMailServiceException serviceException) {
-      assertTrue("Excepted ServiceException thrown", true);
+      assertTrue(true, "Excepted ServiceException thrown");
     }
   }
 }

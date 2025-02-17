@@ -5,15 +5,15 @@ import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.not;
 
 import de.caritas.cob.mailservice.api.model.MailDTO;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class MailErrorMessageBuilderTest {
+class MailErrorMessageBuilderTest {
 
   private final MailErrorMessageBuilder mailErrorMessageBuilder = new MailErrorMessageBuilder();
   private final MailDTO mailDTO = new MailDTO().template("template");
 
   @Test
-  public void
+  void
       buildEmailErrorMessage_Should_returnErrorMessageWithoutEmail_When_emailIsContainedInStacktrace() {
     Exception exception = new RuntimeException("test@test.de");
 
@@ -23,7 +23,7 @@ public class MailErrorMessageBuilderTest {
   }
 
   @Test
-  public void
+  void
       buildEmailErrorMessage_Should_returnErrorMessageWithoutOnlyEmail_When_emailIsContainedInStacktrace() {
     Exception exception = new RuntimeException("address is test@test.de for given user");
 
@@ -34,7 +34,7 @@ public class MailErrorMessageBuilderTest {
   }
 
   @Test
-  public void
+  void
       buildEmailErrorMessage_Should_returnErrorMessageWithCustomReason_When_noEmailIsContainedInReason() {
     Exception exception = new RuntimeException("My custom reason");
 

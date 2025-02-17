@@ -51,8 +51,7 @@ public class TemplateDescriptionService {
       return mapper.readValue(templateDescriptionJson, TemplateDescription.class);
     } catch (Exception ex) {
       throw new TemplateDescriptionServiceException(
-          String.format(
-              "Json file with template description could not be parsed, template name: %s",
+          "Json file with template description could not be parsed, template name: %s".formatted(
               templateName),
           ex);
     }
@@ -78,8 +77,7 @@ public class TemplateDescriptionService {
       return String.join("", fileLines);
     } catch (Exception ex) {
       throw new TemplateDescriptionServiceException(
-          String.format(
-              "Json file with template description could not be loaded, template name: %s",
+          "Json file with template description could not be loaded, template name: %s".formatted(
               templateName),
           ex);
     }

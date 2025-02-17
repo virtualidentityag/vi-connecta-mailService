@@ -66,7 +66,7 @@ public class MailService {
 
   private void logAndSendErrorMessage(MailDTO mail) {
     String errorMessage =
-        String.format("Template description %s could not be found.", mail.getTemplate());
+        "Template description %s could not be found.".formatted(mail.getTemplate());
     LogService.logError(errorMessage);
     sendErrorMail(errorMessage);
   }
@@ -83,7 +83,7 @@ public class MailService {
           .render(desc, mail, data)
           .ifPresent(text -> sendHtmlMail(mail, desc, text, subject));
     } catch (TemplateServiceException e) {
-      var message = String.format("Could not load template: %s", e.getMessage());
+      var message = "Could not load template: %s".formatted(e.getMessage());
       throw new InternalServerErrorException(message, e);
     }
   }
@@ -100,7 +100,7 @@ public class MailService {
       }
     } catch (SmtpMailServiceException | ExchangeMailServiceException e) {
       throw new InternalServerErrorException(
-          String.format("Could not send HTML mail: %s", e.getMessage()), e);
+          "Could not send HTML mail: %s".formatted(e.getMessage()), e);
     }
   }
 

@@ -99,7 +99,7 @@ public class ExchangeMailService {
       LogService.logDebug("email sent");
     } catch (Exception e) {
       throw new ExchangeMailServiceException(
-          String.format("Error while sending Exchange email: %s", msg.toString()), e);
+          "Error while sending Exchange email: %s".formatted(msg.toString()), e);
     } finally {
       exchangeService.close();
     }
@@ -115,7 +115,7 @@ public class ExchangeMailService {
     } catch (URISyntaxException e) {
       exchangeService.close();
       throw new ExchangeMailServiceException(
-          String.format("Could not set ExchangeMailService URL %s ", this.exchangeUrl), e);
+          "Could not set ExchangeMailService URL %s ".formatted(this.exchangeUrl), e);
     }
   }
 

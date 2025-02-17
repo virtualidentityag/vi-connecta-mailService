@@ -6,8 +6,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import de.caritas.cob.mailservice.api.service.MailService;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -15,14 +14,12 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-@RunWith(SpringRunner.class)
 @WebMvcTest(MailController.class)
 @AutoConfigureMockMvc(addFilters = false)
 @TestPropertySource(properties = {"mail.usesmtp=true"})
-public class MailControllerTestSmtpIT {
+class MailControllerTestSmtpIT {
 
   private final String PATH_SEND_MAIL = "/mails/send";
   private final String TEMPLATE = "test";
@@ -43,7 +40,7 @@ public class MailControllerTestSmtpIT {
   @MockBean MailService mailService;
 
   @Test
-  public void sendMail_Should_ReturnOk_WhenTemplateDescriptionIsNotFound() throws Exception {
+  void sendMail_Should_ReturnOk_WhenTemplateDescriptionIsNotFound() throws Exception {
 
     mvc.perform(
             post(PATH_SEND_MAIL)
@@ -54,7 +51,7 @@ public class MailControllerTestSmtpIT {
   }
 
   @Test
-  public void sendMail_Should_SendHtmlMail_And_ReturnOk_WhenExchange() throws Exception {
+  void sendMail_Should_SendHtmlMail_And_ReturnOk_WhenExchange() throws Exception {
 
     mvc.perform(
             post(PATH_SEND_MAIL)

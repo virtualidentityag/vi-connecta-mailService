@@ -42,19 +42,18 @@ public class SecurityConfig {
   public SecurityFilterChain configure(HttpSecurity http) throws Exception {
 
     var httpSecurity =
-        http.csrf()
-            .disable()
+        http.csrf(csrf -> csrf
+            .disable())
             .addFilterBefore(
                 new StatelessCsrfFilter(csrfCookieProperty, csrfHeaderProperty), CsrfFilter.class);
 
     httpSecurity
-        .sessionManagement()
-        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-        .sessionAuthenticationStrategy(new NullAuthenticatedSessionStrategy())
-        .and()
-        .authorizeRequests()
-        .anyRequest()
-        .permitAll();
+        .sessionManagement(management -> management
+            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            .sessionAuthenticationStrategy(new NullAuthenticatedSessionStrategy()))
+        .authorizeHttpRequests(requests -> requests
+            .anyRequest()
+            .permitAll());
 
     return httpSecurity.build();
   }

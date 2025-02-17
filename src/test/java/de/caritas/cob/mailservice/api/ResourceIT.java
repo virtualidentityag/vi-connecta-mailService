@@ -111,8 +111,7 @@ class ResourceIT {
       var subjectKey = desc.getSubject();
       assertNotNull(
           subjectKey,
-          String.format(
-              "Json file with resource description does not contain subject key: %s",
+          "Json file with resource description does not contain subject key: %s".formatted(
               jsonFile.getFilename()));
     }
   }

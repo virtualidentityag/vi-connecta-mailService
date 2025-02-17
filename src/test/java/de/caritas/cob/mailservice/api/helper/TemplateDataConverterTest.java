@@ -1,6 +1,6 @@
 package de.caritas.cob.mailservice.api.helper;
 
-import static org.junit.Assert.assertThat;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.when;
 
 import de.caritas.cob.mailservice.api.model.TemplateDataDTO;
@@ -8,15 +8,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import org.hamcrest.collection.IsMapContaining;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@RunWith(MockitoJUnitRunner.class)
-public class TemplateDataConverterTest {
+@ExtendWith(MockitoExtension.class)
+class TemplateDataConverterTest {
 
   private TemplateDataConverter templateDataConverter;
   @Mock private Helper helper;
@@ -30,13 +30,13 @@ public class TemplateDataConverterTest {
           new TemplateDataDTO().key(KEY1).value(VALUE1),
           new TemplateDataDTO().key(KEY2).value(VALUE2));
 
-  @Before
-  public void setup() {
+  @BeforeEach
+  void setup() {
     this.templateDataConverter = new TemplateDataConverter(helper);
   }
 
   @Test
-  public void convertFromTemplateDataDTOList_Should() {
+  void convertFromTemplateDataDTOList_Should() {
 
     when(helper.removeHTMLFromText(Mockito.eq(VALUE1))).thenReturn(VALUE1);
     when(helper.removeHTMLFromText(Mockito.eq(VALUE2))).thenReturn(VALUE2);
