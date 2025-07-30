@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.12.0](https://github.com/CaritasDeutschland/caritas-onlineBeratung-mailService/compare/v1.11.1...v1.12.0) (2025-07-30)
+
+
+### Features
+
+* add unit test to cover that CRSF filter is working ([6d5b84d](https://github.com/CaritasDeutschland/caritas-onlineBeratung-mailService/commit/6d5b84dd54a0ecc477e4dd22bbeffca7e87bd21e))
+* attempt to fix sonar ([7925f2e](https://github.com/CaritasDeutschland/caritas-onlineBeratung-mailService/commit/7925f2e1aeba75a66ddca0dcdb001005f8461222))
+* revert due to failing tests ([7a9db36](https://github.com/CaritasDeutschland/caritas-onlineBeratung-mailService/commit/7a9db361f8792e012c27c0f3036da9c52d4897e0))
+* TSYSTEMS-196 ([9bdcc22](https://github.com/CaritasDeutschland/caritas-onlineBeratung-mailService/commit/9bdcc22f01bc1d7c84b2fba8ff1091018c31401d))
+* TSYSTEMS-196 ([0309e9d](https://github.com/CaritasDeutschland/caritas-onlineBeratung-mailService/commit/0309e9d3e8a5888c23e1e2e5324df0897b124922))
+* TSYSTEMS-196 ([bf5c639](https://github.com/CaritasDeutschland/caritas-onlineBeratung-mailService/commit/bf5c6390d67f35295fc9ed271c92ec1eeff4e866))
+* TSYSTEMS-196 ([fa2ea0d](https://github.com/CaritasDeutschland/caritas-onlineBeratung-mailService/commit/fa2ea0d5f5d935cb3d00c13c0caada2ba7aa682f))
+
+
+### Bug Fixes
+
+* bump actions versions ([0dd1e8a](https://github.com/CaritasDeutschland/caritas-onlineBeratung-mailService/commit/0dd1e8a8e595a5bbd4d4728f0c793ac4250ea71f))
+* bump cache version ([58d5bef](https://github.com/CaritasDeutschland/caritas-onlineBeratung-mailService/commit/58d5befda9cded80fec8b1fbdf25e2c39ad1147e))
+* LineInputStream dependency issue ([b881b99](https://github.com/CaritasDeutschland/caritas-onlineBeratung-mailService/commit/b881b992b2a473b3ff3bb1b648f8fea538852e95))
+* upgrade spring boot parent ([5a7c2bb](https://github.com/CaritasDeutschland/caritas-onlineBeratung-mailService/commit/5a7c2bbb5e1b5a7a2ed9d0e1681526cc0947fb11))
+
 ### [1.11.1](https://github.com/CaritasDeutschland/caritas-onlineBeratung-mailService/compare/v1.11.0...v1.11.1) (2024-04-11)
 
 ## [1.11.0](https://github.com/CaritasDeutschland/caritas-onlineBeratung-mailService/compare/v1.10.0...v1.11.0) (2024-02-05)
